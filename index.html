@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Express Test Page</title>
+    </head>
+    <body>
+        <h1>Express Test Page</h1>
+        <p id ="resp">Response from Server</p>
+        <button id="reqSendButton">Send Post Request</button>
+        <script>
+                  console.log("This is our script for the page");
+      document.getElementById("subButton").addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("User clicked the submit button");
+      });
+
+      document
+        .getElementById("reqSendButton")
+        .addEventListener("click", (e) => {
+          console.log("User clicked the button");
+
+          /*
+          genGet("/api/character/almond_milk").then((data) => {
+            console.log(data); // JSON data parsed by `data.json()` call
+            document.getElementById("resp").innerHTML = JSON.stringify(data);
+          });
+          */
+
+          const userData = {
+            name: "almond_milk_2",
+            health: { shield: 0, life: 8 },
+          };
+
+          genPost("/api/character", userData).then((data) => {
+            console.log(data); // JSON data parsed by `data.json()` call
+            document.getElementById("resp").innerHTML = JSON.stringify(data);
+          });
+        });
+
+      // Example GET method implementation:
+      async function genGet(url) {
+        const response = await fetch(url, {
+          method: "GET",
+          mode: "cors",
+          cache: "no-cache",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          redirect: "follow",
+          referrerPolicy: "no-referrer",
+        });
+        return response.json();
+      }
+
+      // Example POST method implementation:
+      async function genPost(url, data) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+          method: "POST",
+          mode: "cors",
+          cache: "no-cache",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          redirect: "follow",
+          referrerPolicy: "no-referrer",
+          body: JSON.stringify(data),
+        });
+        return response.json();
+      }
+        </script>
+    </body> 
+</html>
