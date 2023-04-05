@@ -1,0 +1,21 @@
+// I think this might answer the most questions from app
+// developers
+// represents a collection of these documents
+// book gave us 3: location, character, item
+// collection name is: character
+{
+ _id: ObjectID(),
+ look: {skin: skinname},
+ alive: true,
+ protection: {
+    health: 100,
+    shield: 0,
+    overshield: 0
+ },
+ tag: gamertag,
+ inventory: [
+    {itemname: ar, itemtype: gun-auto, ammocap: 30, color: grey},
+    {itemname: pickaxe, itemtype: tool, durability: 100}
+ ],
+ jig: {dancing: true, jigname: annoyingjig},
+}
